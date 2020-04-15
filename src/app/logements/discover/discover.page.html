@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Découvrir des Logements</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+    <ion-col size="12" size-sm="8" offset-sm="2">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{loadedLogements[0].title}}</ion-card-title>
+          <ion-card-subtitle>{{loadedLogements[0].prix | currency: 'EUR'}} Par Nuit </ion-card-subtitle>
+        </ion-card-header>
+          <ion-img [src]="loadedLogements[0].imageUrl"></ion-img>
+
+          <ion-card-content>
+           <p>{{loadedLogements[0].description}}</p>
+          </ion-card-content>
+          <div>
+            <ion-button 
+                  fill="clear" 
+                  color="success" 
+                  [routerLink]="[
+                            '/', 
+                            'logements', 
+                            'tabs', 
+                            'discover', 
+                            'loadedLogements[0].id']">
+              ...Plus
+                          </ion-button>
+          </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+      <ion-row>
+        <ion-col size="12" size-sm="8" offset-sm="2">
+          <ion-list>
+            <ion-item detail 
+                  *ngFor="let logement of loadedLogements.slice(1)" 
+                  [routerLink]="['logements','tabs','discover',loadedLogements[0].id]">
+              <ion-thumbnail slot="start">
+                <ion-img [src]="logement.imageUrl"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                <h2>{{logement.title}}</h2>
+                <p>{{logement.description}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+</ion-content>
