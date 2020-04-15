@@ -4,6 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
   <ion-grid>
     <ion-row>
@@ -18,7 +20,7 @@
           <ion-card-content>
            <p>{{loadedLogements[0].description}}</p>
           </ion-card-content>
-          <div>
+          <div class="ion-text-right">
             <ion-button 
                   fill="clear" 
                   color="success" 
@@ -27,9 +29,9 @@
                             'logements', 
                             'tabs', 
                             'discover', 
-                            'loadedLogements[0].id']">
+                            loadedLogements[0].id]">
               ...Plus
-                          </ion-button>
+            </ion-button>
           </div>
       </ion-card>
     </ion-col>
@@ -40,7 +42,7 @@
           <ion-list>
             <ion-item detail 
                   *ngFor="let logement of loadedLogements.slice(1)" 
-                  [routerLink]="['logements','tabs','discover',loadedLogements[0].id]">
+                  [routerLink]="['/','logements','tabs','discover',logement.id]">
               <ion-thumbnail slot="start">
                 <ion-img [src]="logement.imageUrl"></ion-img>
               </ion-thumbnail>

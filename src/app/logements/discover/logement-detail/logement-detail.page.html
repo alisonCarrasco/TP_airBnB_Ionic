@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>logement-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/logements/tabs/discover"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details Logement</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-button color="success" (click)="onBookLogement()">Réserver</ion-button>
 
 </ion-content>

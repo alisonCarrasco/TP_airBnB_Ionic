@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LogementsService } from '../logements.service';
+import { Logement } from '../logement.model';
+
 
 @Component({
   selector: 'app-offres',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OffresPage implements OnInit {
 
-  constructor() { }
+  loadedOffres: Logement[] ;
+  constructor(private LogementsService: LogementsService) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.loadedOffres = this.LogementsService.logements;
   }
 
 }
