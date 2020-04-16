@@ -8,7 +8,7 @@
     <ion-content>
       <ion-list>
         <ion-menu-toggle>
-        <ion-item routerLink="/logemnts/tabs/discover">
+        <ion-item routerLink="/logements/tabs/discover">
           <ion-icon name="business" slot="start"></ion-icon>
           <ion-label>Découvrez des endroits inoubliables</ion-label>
         </ion-item> 
@@ -20,7 +20,7 @@
         </ion-item>
       </ion-menu-toggle>  
       <ion-menu-toggle>
-        <ion-item (click)="onLogout()">
+        <ion-item button (click)="onLogout()">
           <ion-icon name="exit" slot="start"></ion-icon>
           <ion-label>Déconnexion</ion-label>
         </ion-item>

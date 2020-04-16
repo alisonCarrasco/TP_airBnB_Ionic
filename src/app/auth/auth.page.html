@@ -1,10 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Connexion</ion-title>
+    <ion-title>{{ isLogin ? "Login":"creer un compte"}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button color="success" (click)="onLogin()">Login</ion-button>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm = "3">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+              <ion-input type="email" 
+                        ngModel name="email" 
+                        required 
+                        email 
+                        #emailCtrl="ngModel"
+                        ></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!emailCtrl.valid && !emailCtrl.touched" lines="none">
+                <ion-label>Email non valide</ion-label>
+              </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input type="password" 
+                          ngModel name="password" 
+                          required
+                           minlength="5" 
+                           #passwordCtrl="ngModel"
+                           ></ion-input>
+          </ion-item>
+                <ion-item *ngIf="!passwordCtrl.valid && !passwordCtrl.touched" lines="none">
+                <ion-label>Au moins 5 caractères SVP</ion-label>
+              </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-md = "3">
+        <ion-button type="button" fill="clear" expand="block" color="tertiary" (click)="onSwitchAuthMode()">{{isLogin ? "créer un compte":"Login"}}</ion-button>
+        <ion-button type="submit" color="success" expand="block" (click)="onLogin()"  [disabled]="!f.valid">Login</ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  </form>
+  
 
 </ion-content>
